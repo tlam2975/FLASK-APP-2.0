@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - SwapClub</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon_io/favicon.ico">
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <h1 class="logo">SwapClub</h1>
+            <!-- <div window.location.href ="/home">
+                <a  class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Quay lại
+                </a>
+            </div> -->
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="payment-container">
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h2>Thông tin đơn hàng</h2>
+                <div class="summary-card">
+                    <div id="item-summary" class="summary-content">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="payment-methods">
+                <h2>Chọn phương thức thanh toán</h2>
+                
+                <div class="payment-options-grid">
+                    <div class="payment-option-card" data-method="card">
+                        <div class="payment-option-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="payment-option-name">Thẻ tín dụng/ghi nợ</div>
+                    </div>
+                    
+                    <div class="payment-option-card" data-method="apple-pay">
+                        <div class="payment-option-icon">
+                            <i class="fab fa-apple-pay"></i>
+                        </div>
+                        <div class="payment-option-name">Apple Pay</div>
+                    </div>
+                    
+                    <div class="payment-option-card" data-method="visa">
+                        <div class="payment-option-icon">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                        <div class="payment-option-name">Visa</div>
+                    </div>
+                    
+                    <div class="payment-option-card" data-method="momo">
+                        <div class="payment-option-icon momo-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="payment-option-name">MoMo</div>
+                    </div>
+                </div>
+
+                <div class="payment-actions">
+                    <button id="complete-payment" class="btn btn-primary" disabled>Hoàn tất thanh toán</button>
+                    <a href="/home" class="btn btn-outline">Hủy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Thanh toán thành công!</h2>
+                <p>Cảm ơn bạn đã mua hàng tại SwapClub.</p>
+                <p class="transaction-info">Thông tin giao dịch đã được lưu lại.</p>
+                <button id="back-to-home" class="btn btn-primary">Quay lại trang chủ</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 SwapClub - Nền tảng mua bán đồ dùng học tập đã qua sử dụng</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/payment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
