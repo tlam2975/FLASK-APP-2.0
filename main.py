@@ -2,10 +2,6 @@ import os
 from flask import Flask
 from flask_cors import CORS
 from backend.common.database import db
-# from backend.services.production_planning.api import production_planning_bp
-# from backend.services.production_control.api import production_control_bp
-# from backend.services.quality_management.api import quality_management_bp
-# from backend.services.material_management.api import material_management_bp
 from backend.services.home.api import home_bp
 from backend.services.login.api import login_bp
 from backend.services.payment.api import payment_bp
@@ -22,12 +18,12 @@ def create_app():
     db.init_app(app)
 
     # Đăng ký các blueprint sau khi khởi tạo app
-    app.register_blueprint(home_bp, url_prefix='/api/home')
     app.register_blueprint(login_bp, url_prefix='/api/login')
+    app.register_blueprint(home_bp, url_prefix='/api/home')
     app.register_blueprint(payment_bp, url_prefix='/api/payment')
 
     return app
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True, host='0.0.0.0', port=2975)
+    app.run(debug=True, host='0.0.0.0', port=5000)

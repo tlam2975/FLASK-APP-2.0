@@ -46,46 +46,44 @@ function setupEventListeners() {
         });
     });
     
-    // Login form submission
-    loginForm.addEventListener('submit', (e) => {
+    // Login form check
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
-        const rememberMe = document.getElementById('remember-me').checked;
-        
-        // Validate form
         if (!email || !password) {
-            alert('Vui lòng điền đầy đủ thông tin đăng nhập.');
+            alert('Please enter your email and password.');
             return;
         }
+        else {
+            try {
+                const response = await fetch('http://localhost:5000/api/login/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                });
         
-        // Simulate login (would connect to backend in a real app)
-        console.log('Login data:', { email, password, rememberMe });
+                const data = await response.json();
         
-        // Redirect to home page after successful login
-        // alert('Đăng nhập thành công!');
-        // window.location.href = 'main.html';
-        // fetch('/login', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ email, password, rememberMe })
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     if (data.success) {
-        //         window.location.href = '/home';
-        //     } else {
-        //         alert(data.message || 'Login failed');
-        //     }
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        //     alert('An error occurred during login');
-        // });
-        window.location.href = '/home';
+                if (data.success) {
+                    window.location.href = '/home';
+                    console.log('Login successful:', data);
+                } else {
+                    alert('Invalid email or password. Please try again.');
+                    console.log('Login failed:', data.message);
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('An error occurred during login. Please try again.');
+                console.log('Error:', error);
+            }
+        }   
     });
     
     // Register form submission
